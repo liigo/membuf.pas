@@ -1,7 +1,9 @@
 unit Membuf;
 
-
+// A growable continuous in-memory buffer in pure Object Pascal/Delphi.
+// https://github.com/liigo/membuf.pas
 // Liigo, 201603.
+
 
 interface
 
