@@ -26,6 +26,8 @@ type
     procedure AppendByte(v: Byte);
     procedure AppendBytes(const Bytes: array of Byte);
     procedure AppendData(Data: Pointer; Size: Integer);
+    procedure AppendIntegers(const Integers: array of Integer);
+    procedure AppendDoubles(const Doubles: array of Double);
     function InsertByte(Offset: Integer; Value: Byte): Boolean;
     function InsertBytes(Offset: Integer; const Bytes: array of Byte): Boolean;
     function InsertData(Offset: Integer; Data: Pointer; Size: Integer): Boolean;
@@ -258,6 +260,22 @@ begin
       break;
     end;
   end;
+end;
+
+procedure TMembuf.AppendIntegers(const Integers: array of Integer);
+var
+  Data: PByte;
+begin
+  Data := @Integers[0];
+  AppendData(Data, Length(Integers) * SizeOf(Integer));
+end;
+
+procedure TMembuf.AppendDoubles(const Doubles: array of Double);
+var
+  Data: PByte;
+begin
+  Data := @Doubles[0];
+  AppendData(Data, Length(Doubles) * SizeOf(Double));
 end;
 
 end.
