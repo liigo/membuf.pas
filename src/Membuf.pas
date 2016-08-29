@@ -117,7 +117,7 @@ begin
   DestPtr := PtrOffset(FData, FSize);
   // Liigo 20160330: Move()'s interface and definition are both sick.
   // See source code of Move() and StrMove().
-  StrMove(PChar(DestPtr), PChar(Data), Size);
+  StrMove(PAnsiChar(DestPtr), PAnsiChar(Data), Size);
   FSize := FSize + Size;
 end;
 
@@ -150,8 +150,8 @@ begin
   Reserve(Size);
   Ptr1 := DataOffset(Offset);
   Ptr2 := DataOffset(Offset + Size);
-  StrMove(PChar(Ptr2), PChar(Ptr1), FSize - Offset);
-  StrMove(PChar(Ptr1), PChar(Data), Size);
+  StrMove(PAnsiChar(Ptr2), PAnsiChar(Ptr1), FSize - Offset);
+  StrMove(PAnsiChar(Ptr1), PAnsiChar(Data), Size);
   FSize := FSize + Size;
   Result := true;
 end;
@@ -167,7 +167,7 @@ begin
   if Count > 0 then begin
     SrcPtr  := DataOffset(Offset + Size);
     DestPtr := DataOffset(Offset);
-    StrMove(PChar(DestPtr), PChar(SrcPtr), Count);
+    StrMove(PAnsiChar(DestPtr), PAnsiChar(SrcPtr), Count);
   end;
   FSize := FSize - Size;
   Result := true;
